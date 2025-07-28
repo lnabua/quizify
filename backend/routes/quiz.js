@@ -1,38 +1,37 @@
-// import express from "express";
-// import { OpenAI } from "openai";
+import express from "express";
+import { OpenAI } from "openai";
 
-// const router = express.Router();
+const router = express.Router();
 
-// const openai = new OpenAI({
-//   apiKey: process.env.OPENAI_API_KEY,
-// });
+router.post("/", async (req, res) => {
+  const { notes } = req.body;
 
-// router.post("/", async (req, res) => {
-//   const { notes } = req.body;
+  if (!notes) {
+    return res.status(400).json({ error: "No notes provided" });
+  }
 
-//   if (!notes) {
-//     return res.status(400).json({ error: "No notes provided" });
-//   }
+  const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
 
-//   const prompt = `
-//   Create 5 multiple-choice quiz questions from the following study notes.
-//   Each question should have 4 options and indicate the correct answer clearly.
-//   Notes:
-//   ${notes}
-//   `;
+  const prompt = `
+  Create 5 multiple-choice quiz questions from the following study notes.
+  Each question should have 4 options and indicate the correct answer clearly.
+  Notes:
+  ${notes}
+  `;
 
-//   try {
-//     const completion = await openai.chat.completions.create({
-//       model: "gpt-4",
-//       messages: [{ role: "user", content: prompt }],
-//       temperature: 0.7,
-//     });
+  try {
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [{ role: "user", content: prompt }],
+    });
 
-//     const quizText = completion.choices[0].message.content;
-//     res.json({ quiz: quizText });
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// });
+    const quizText = completion.choices[0].message.content;
+    res.json({ quiz: quizText });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
-// export default router;
+export default router;
