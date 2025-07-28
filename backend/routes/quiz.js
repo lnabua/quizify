@@ -15,8 +15,26 @@ router.post("/", async (req, res) => {
   });
 
   const prompt = `
-  Create 5 multiple-choice quiz questions from the following study notes.
-  Each question should have 4 options and indicate the correct answer clearly.
+  From the following notes, generate 5 multiple-choice quiz questions in this exact JSON format:
+
+  [
+    {
+      "question": "Question text here",
+      "options": {
+        "A": "Option A text",
+        "B": "Option B text",
+        "C": "Option C text",
+        "D": "Option D text"
+      },
+      "answer": {
+        "A": "Option A text"
+      }
+    },
+    ...
+  ]
+
+Make sure the correct answer's letter and text match the options.
+
   Notes:
   ${notes}
   `;
@@ -27,10 +45,18 @@ router.post("/", async (req, res) => {
       messages: [{ role: "user", content: prompt }],
     });
 
-    const quizText = completion.choices[0].message.content;
-    res.json({ quiz: quizText });
+    let quizText = completion.choices[0].message.content.trim();
+
+    if (quizText.startsWith("```")) {
+      quizText = quizText.replace(/```json|```/g, "").trim();
+    }
+
+    const quiz = JSON.parse(quizText);
+
+    res.json({ quiz });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error("Error generating quiz:", err);
+    res.status(500).json({ error: "Failed to generate quiz" });
   }
 });
 
