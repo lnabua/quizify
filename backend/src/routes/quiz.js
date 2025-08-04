@@ -3,6 +3,11 @@ import { OpenAI } from "openai";
 
 const router = express.Router();
 
+// To be deleted: Testing frontend connection
+router.get("/", (req, res) => {
+  res.json({ message: "Frontend is connected!" });
+});
+
 router.post("/", async (req, res) => {
   const { notes } = req.body;
 
