@@ -4,7 +4,7 @@ import GenerateQuiz from "./pages/GenerateQuiz";
 
 const App = () => {
   return (
-    <div data-theme="retro">
+    <div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/generate" element={<GenerateQuiz />} />

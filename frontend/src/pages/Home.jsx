@@ -1,59 +1,58 @@
-import api from "../lib/axios";
-import { useEffect } from "react";
 import { Link } from "react-router";
 
 const Home = () => {
-  // Testing frontend/backend connection
-  useEffect(() => {
-    api
-      .get("/quiz")
-      .then((res) => {
-        console.log("Response from backend:", res.data);
-      })
-      .catch((err) => {
-        console.error("Error connecting to backend:", err);
-      });
-  }, []);
-
   return (
-    <div className="flex w-full flex-col h-screen">
-      <div className="flex flex-col justify-center items-center bg-primary-content h-1/2">
-        <h1 className="text-white text-5xl font-bold">Quizify</h1>
-        <h2 className="text-white text-2xl font-bold mt-2">
-          AI Quiz Generator
-        </h2>
-        <p className="text-white text-lg">
-          Convert any text into an interactive quiz in seconds.
+    <div className="min-h-screen flex flex-col justify-between bg-zinc-100 text-zinc-900">
+      {/* Hero Section */}
+      <section className="flex flex-col items-center justify-center text-center py-20 px-6 bg-zinc-200">
+        <h1 className="text-5xl font-extrabold text-zinc-800 mb-4 tracking-tight">
+          Quizify
+        </h1>
+        <p className="text-lg sm:text-xl mb-8 max-w-2xl text-zinc-700">
+          Turn your study notes into interactive quizzes — instantly, using AI.
         </p>
-        <div className="mt-2">
-          <Link to="/generate" className="btn btn-primary btn-lg">
-            Let's Get Started!
-          </Link>
-        </div>
-      </div>
-      <div className="hero bg-base-200 h-1/2">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <img
-            src="https://picsum.photos/200/300"
-            className="max-w-sm rounded-lg shadow-2xl"
-          />
-          <div>
-            <h1 className="text-3xl font-bold">Here's how it works</h1>
-            <p className="pb-5 text-lg">Make a quiz in 60 seconds.</p>
-            <ol className="list-decimal pl-6 marker:text-base-content marker:font-bold text-lg">
-              <li>
-                Insert content you want to make a quiz from, e.g. an excerpt
-                from a Wikipedia article.
-              </li>
-              <li>Press Generate Quiz and test the result!</li>
-              <li>
-                Click View quiz to add more questions, change the design and
-                collect responses.
-              </li>
-            </ol>
+        <Link to="/generate">
+          <button className="bg-amber-600 text-white px-6 py-3 rounded-md hover:bg-amber-700 transition-all font-semibold shadow-md">
+            Get Started
+          </button>
+        </Link>
+      </section>
+
+      {/* How It Works Section */}
+      <section className="py-16 px-6 text-center bg-zinc-100">
+        <h2 className="text-3xl font-bold text-zinc-800 mb-12">How It Works</h2>
+        <div className="grid gap-8 md:grid-cols-3 max-w-5xl mx-auto">
+          <div className="bg-white p-6 shadow rounded-md border border-zinc-200">
+            <h3 className="text-lg font-semibold mb-2 text-amber-700">
+              1. Paste Notes
+            </h3>
+            <p className="text-sm text-zinc-600">
+              Copy and paste your notes into the generator.
+            </p>
+          </div>
+          <div className="bg-white p-6 shadow rounded-md border border-zinc-200">
+            <h3 className="text-lg font-semibold mb-2 text-amber-700">
+              2. AI Generates Quiz
+            </h3>
+            <p className="text-sm text-zinc-600">
+              Our AI transforms your notes into multiple-choice questions.
+            </p>
+          </div>
+          <div className="bg-white p-6 shadow rounded-md border border-zinc-200">
+            <h3 className="text-lg font-semibold mb-2 text-amber-700">
+              3. Review & Learn
+            </h3>
+            <p className="text-sm text-zinc-600">
+              Answer the questions to reinforce your learning.
+            </p>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-6 text-center text-sm text-zinc-500 border-t border-zinc-200">
+        © 2025 Quizify. Built by Lorraine Nabua.
+      </footer>
     </div>
   );
 };
