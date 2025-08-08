@@ -2,11 +2,13 @@ import { useState } from "react";
 import api from "../lib/axios";
 import toast from "react-hot-toast";
 import QuizForm from "../components/QuizForm";
-import QuizPreview from "../components/QuizPreview";
+import { useNavigate } from "react-router";
 
-const GenerateQuiz = () => {
+const GenerateQuizPage = () => {
   const [quiz, setQuiz] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleGenerateQuiz = async (notes) => {
     setLoading(true); //disables quiz form while new quiz is being generated
@@ -17,8 +19,9 @@ const GenerateQuiz = () => {
     try {
       const response = await api.post("/quiz", { notes });
       console.log(response.data.quiz);
-      setQuiz(response.data.quiz);
+      setQuiz(response.data.quiz); //TBD: might not need since res.data is being used in another page
       toast.success("Quiz generated successfully!", { id: loadingToast });
+      navigate("/quiz", { state: { quiz: response.data.quiz } });
     } catch (err) {
       toast.error("Something went wrong. Please try again.", {
         id: loadingToast,
@@ -37,11 +40,9 @@ const GenerateQuiz = () => {
         </p>
 
         {!quiz && <QuizForm onSubmit={handleGenerateQuiz} loading={loading} />}
-
-        {quiz && <QuizPreview quiz={quiz} />}
       </div>
     </div>
   );
 };
 
-export default GenerateQuiz;
+export default GenerateQuizPage;

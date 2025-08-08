@@ -1,13 +1,15 @@
 import { Route, Routes } from "react-router";
-import Home from "./pages/Home";
-import GenerateQuiz from "./pages/GenerateQuiz";
+import HomePage from "./pages/HomePage";
+import GenerateQuizPage from "./pages/GenerateQuizPage";
+import QuizPage from "./pages/QuizPage";
 
 const App = () => {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/generate" element={<GenerateQuiz />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/generate" element={<GenerateQuizPage />} />
+        <Route path="/quiz" element={<QuizPage />} />
       </Routes>
     </div>
   );
