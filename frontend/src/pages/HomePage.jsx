@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-const Home = () => {
+const HomePage = () => {
   return (
     <div className="min-h-screen flex flex-col justify-between bg-zinc-100 text-zinc-900">
       {/* Hero Section */}
@@ -57,4 +57,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;
