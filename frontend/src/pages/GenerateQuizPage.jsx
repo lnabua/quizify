@@ -23,6 +23,7 @@ const GenerateQuizPage = () => {
       toast.success("Quiz generated successfully!", { id: loadingToast });
       navigate("/quiz", { state: { quiz: response.data.quiz } });
     } catch (err) {
+      console.error(err);
       toast.error("Something went wrong. Please try again.", {
         id: loadingToast,
       });
