@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const QuizCard = ({
   questionData,
@@ -23,6 +24,10 @@ const QuizCard = ({
   };
 
   const handleCheckAnswer = () => {
+    if (!selectedAnswer) {
+      toast.error("Please select an answer before submitting.");
+      return;
+    }
     const res = selectedAnswer === correctAnswer ? "correct" : "wrong";
     setResult(res);
     if (onSave) {
