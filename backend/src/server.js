@@ -16,8 +16,8 @@ app.use(
   })
 );
 app.use(express.json());
-app.use("/api/quiz", quizRoute);
 app.use("/api/auth", authRoutes);
+app.use("/api/quizzes", quizRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
