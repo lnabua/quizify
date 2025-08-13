@@ -3,6 +3,11 @@ import User from "../models/User.js";
 
 const protectRoute = async (req, res, next) => {
   try {
+    const authHeader = req.headers.authorization;
+
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      return res.status(401).json({ error: "Unauthorized: No token provided" });
+    }
     // get token
     const token = req.header("Authorization").replace("Bearer ", "");
     if (!token)
