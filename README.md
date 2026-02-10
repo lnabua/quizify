@@ -1,14 +1,14 @@
-# 📚 Quizify – AI-Powered Quiz Generator
+# Quizify – AI-Powered Quiz Generator
 
 Quizify is a MERN stack web application that transforms your study notes into interactive quizzes using OpenAI’s GPT models. It’s designed for students, educators, and lifelong learners who want to test their knowledge in a fun and efficient way.
 
 ---
 
-## 🎥 Demo
+## Demo
 
 ---
 
-## 🚀 Features
+## Features
 
 - **AI-Generated Quizzes** – Paste your notes, and AI instantly creates multiple-choice questions.
 - **Quiz Title & Structure** – Generates a relevant quiz title and 5 well-structured MCQs.
@@ -19,7 +19,7 @@ Quizify is a MERN stack web application that transforms your study notes into in
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 **Frontend**
 
@@ -38,7 +38,7 @@ Quizify is a MERN stack web application that transforms your study notes into in
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```bash
 quizify/
@@ -61,16 +61,16 @@ quizify/
 
 ---
 
-## ⚙️ Installation & Setup
+## Installation & Setup
 
-**1️⃣ Clone the Repository**
+**Clone the Repository**
 
 ```bash
 git clone https://github.com/yourusername/quizify.git
 cd quizify
 ```
 
-**2️⃣ Backend Setup**
+**Backend Setup**
 
 ```bash
 cd backend
@@ -92,7 +92,7 @@ Run the backend:
 npm run dev
 ```
 
-**3️⃣ Frontend Setup**
+**Frontend Setup**
 
 ```bash
 cd frontend
@@ -100,7 +100,7 @@ npm install
 npm run dev
 ```
 
-## 📌 Usage
+## Usage
 
 1. Sign up or Log in.
 2. Navigate to Generate Quiz.
@@ -110,7 +110,7 @@ npm run dev
 
 ---
 
-## 🔮 Future Improvements
+## Future Improvements
 
 - Leaderboard – Track top quiz scorers.
 - Export Quizzes – Download as PDF or CSV for offline use.
@@ -120,6 +120,6 @@ npm run dev
 
 ---
 
-## 📜 License
+## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
